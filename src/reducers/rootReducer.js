@@ -1,21 +1,38 @@
-import { INCREMENT, DECREMENT } from '../actions/types';
+import {
+  SEARCH_SUCCESS,
+  SEARCH_FAIL,
+  MOVIE_FETCHED,
+  MOVIE_FETCH_FAIL
+} from '../actions/types';
 
 const initialState = {
-  counter: 0
+  counter: 0,
+  searchResults: {},
+  currentMovie: {}
 };
 
 export default function rootReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case INCREMENT:
+    case SEARCH_SUCCESS:
       return {
         ...state,
-        counter: state.counter + payload
+        searchResults: payload
       };
-    case DECREMENT:
+    case SEARCH_FAIL:
       return {
         ...state,
-        counter: state.counter + payload
+        searchResults: payload
+      };
+    case MOVIE_FETCHED:
+      return {
+        ...state,
+        currentMovie: payload
+      };
+    case MOVIE_FETCH_FAIL:
+      return {
+        ...state,
+        currentMovie: payload
       };
     default:
       return state;

@@ -1,28 +1,24 @@
 import React from 'react';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import * as actionCreator from './actions/actions';
+import MovieList from './pages/MovieList';
+import MovieDetails from './pages/MovieDetails';
 
 export default function App() {
-  // useSelector() is used to get the state from redux
-  const counter = useSelector(state => state.counter);
-
-  // useDispatch() is used to dispatch actions
-  const dispatch = useDispatch();
-
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Counter: {counter}</h1>
-        <button onClick={() => dispatch(actionCreator.increment(2))}>
-          Increment 2
-        </button>
-        <button onClick={() => dispatch(actionCreator.decrement(-2))}>
-          Decrement 2
-        </button>
-      </header>
+      <Router>
+        <Switch>
+          <Route exact path="/" render={() => <Redirect to="/movie-list" />} />
+          <Route exact path="/movie-list" component={MovieList} />
+          <Route exact path="/movie-list/:id" component={MovieDetails} />
+        </Switch>
+      </Router>
     </div>
   );
 }

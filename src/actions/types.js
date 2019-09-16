@@ -1,2 +1,4 @@
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
+export const SEARCH_FAIL = 'SEARCH_FAIL';
+export const MOVIE_FETCHED = 'MOVIE_FETCHED';
+export const MOVIE_FETCH_FAIL = 'MOVIE_FETCH_FAIL';
